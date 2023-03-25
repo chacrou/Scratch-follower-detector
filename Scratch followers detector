@@ -1,0 +1,27 @@
+from tkinter.messagebox import YES
+import scratchattach as scratch3
+
+
+session = scratch3.Session("your session id", username="username") #replace with your session_id and username
+conn = session.connect_cloud("") #replace with your project id
+client = scratch3.CloudRequests(conn)
+user = scratch3.get_user("your_username")
+
+@client.request
+def follower(argument1):
+    #Return 'yes' if the user follow you
+    follower = user.is_followed_by(argument1 + "")
+    if follower == True:    
+        return 'Yes'
+    else:
+        return 'No'
+@client.request
+def my_followers():
+		#return the number of your followers
+		followers = user.follower_count()
+		return followers
+@client.event
+def on_ready():
+    print("Request handler is running")
+		
+client.run()
