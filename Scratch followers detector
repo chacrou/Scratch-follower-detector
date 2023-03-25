@@ -16,10 +16,10 @@ def follower(argument1):
     else:
         return 'No'
 @client.request
-def my_followers():
-		#return the number of your followers
-		followers = user.follower_count()
-		return followers
+def myfollowers():
+    #return the number of your followers
+    followers = user.follower_count()
+    return followers
 @client.event
 def on_ready():
     print("Request handler is running")
